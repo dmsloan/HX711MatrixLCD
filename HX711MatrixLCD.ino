@@ -3,8 +3,6 @@
 
  bogde's library is released under a GNU GENERAL PUBLIC LICENSE
 
-
-
  Arduino pin
  3 -> HX711 CLK
  12 -> DOUT
@@ -94,7 +92,7 @@ int inc = -2;
 
 void loop() /*----( LOOP: RUNS CONSTANTLY )----*/
 {
-  static uint8_t PROGMEM const ibe[] =
+  static uint8_t PROGMEM const ibe[] =  //create an IBE logo to display on an 8X8 matrix
       {B11111111,
        B10000001,
        B10100001,
@@ -103,7 +101,7 @@ void loop() /*----( LOOP: RUNS CONSTANTLY )----*/
        B10000001,
        B11111111};
 
-  static uint8_t PROGMEM const crosshatch[] =
+  static uint8_t PROGMEM const crosshatch[] =  //create a heart to display on an 8X8 matrix
       {B00000000,
        B01100110,
        B11111111,
@@ -113,19 +111,18 @@ void loop() /*----( LOOP: RUNS CONSTANTLY )----*/
        B00111100,
        B00011000};
 
-  matrix.fillScreen(LOW);                   // clear the display
-  matrix.drawBitmap(0, 0, ibe, 8, 8, HIGH); // setup the image to display
-  matrix.write();                           // display the image
+  matrix.fillScreen(LOW);                          //clear the display
+  matrix.drawBitmap(0,0,ibe,8,8,HIGH);             //setup the image to display
+  matrix.write();                                  //display the image
   delay(1000);
-  matrix.fillScreen(LOW); // clear the display
+  matrix.fillScreen(LOW);                          //clear the display
 
-  matrix.fillScreen(LOW);                          // clear the display
-  matrix.drawBitmap(0, 0, crosshatch, 8, 8, HIGH); // setup the image to display
-  matrix.write();                                  // display the image
+  matrix.drawBitmap(0,0,crosshatch,8,8,HIGH);      //setup the image to display
+  matrix.write();                                  //display the image
   delay(1000);
-  matrix.fillScreen(LOW); // clear the display
+  matrix.fillScreen(LOW);                          //clear the display
 
-  scale.set_scale(calibration_factor); //Adjust to this calibration factor
+  scale.set_scale(calibration_factor);             //Adjust to this calibration factor
 
   float reading = 0;
   reading = scale.get_units(5), 1; //Read scaled units, average 5 readings, display 1 decimal places
