@@ -50,7 +50,7 @@ Max72xxPanel matrix = Max72xxPanel(pinCS, numberOfHorizontalDisplays, numberOfVe
 void setup()
 {
   matrix.setIntensity(0);
-  matrix.setRotation(3);
+  matrix.setRotation(2);
 
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
